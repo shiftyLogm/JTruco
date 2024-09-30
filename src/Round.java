@@ -1,7 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Round {
+interface Hands {
+
+    static List<String> hands(Carta[] round, int begin, int end) {
+
+        List<String> hand = new ArrayList<>();
+
+        for (int i = begin; i < end; i++) {
+            hand.add(round[i].showCard());
+        }
+
+        return hand;
+    }
+}
+
+public class Round implements Hands{
 
     // Variável que armazena as cartas geradas na rodada atual
     private final Carta[] round;
@@ -11,7 +25,7 @@ public class Round {
 
     // Variável que armazena as manilhas da rodada
     private final Manilha manilha;
-    public String getManilha() {
+    public String getVira() {
         return manilha.showCard();
     }
 
@@ -20,7 +34,6 @@ public class Round {
 
         // Instanciando as manilhas atuais
         this.manilha = new Manilha();
-        manilha.getManilhas().forEach(m -> System.out.println(m));
 
         // Gerando o round na variavel round
         this.round = generateRound();
@@ -62,15 +75,23 @@ public class Round {
     }
 
     // Metodo que mostra a sua mao atual da rodada
-    public String[] showHand() {
+    public List<String> showHand() {
 
-        String[] hand = new String[3];
+        return Hands.hands(round, 0, 3);
 
-        for (int i = 0; i < 3; i++) {
-            hand[i] = round[i].showCard();
-        }
+    }
 
-        return hand;
+    public List<String> enemyHand() {
+
+        return Hands.hands(round, 3, 6);
+
+    }
+
+
+    // Metodo que retorna em um ArrayList as manilhas da rodada
+    public List<String> showManilhas() {
+
+        return manilha.getManilhas();
 
     }
 

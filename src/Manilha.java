@@ -20,7 +20,7 @@ public class Manilha extends Carta {
 
         // Caso a vira seja "3", precisamos utilizar um ternario(ou if) para retornar para o valor "4", ou seja, o primeiro índice do Array
         final String valorCartaManilha = idxVira == baralho.getBaralho().length - 1
-                ? "4"
+                ? baralho.getBaralho()[0]
                 : baralho.getBaralho()[idxVira + 1];
 
         List<String> manilhas = new ArrayList<>();
