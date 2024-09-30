@@ -3,12 +3,12 @@ import java.util.List;
 
 interface Hands {
 
-    static List<String> hands(Carta[] round, int begin, int end) {
+    static List<Carta> hands(Carta[] round, int begin, int end) {
 
-        List<String> hand = new ArrayList<>();
+        List<Carta> hand = new ArrayList<>();
 
         for (int i = begin; i < end; i++) {
-            hand.add(round[i].showCard());
+            hand.add(round[i]);
         }
 
         return hand;
@@ -75,13 +75,13 @@ public class Round implements Hands{
     }
 
     // Metodo que mostra a sua mao atual da rodada
-    public List<String> showHand() {
+    public List<Carta> showHand() {
 
         return Hands.hands(round, 0, 3);
 
     }
 
-    public List<String> enemyHand() {
+    public List<Carta> enemyHand() {
 
         return Hands.hands(round, 3, 6);
 

@@ -16,12 +16,12 @@ public class Manilha extends Carta {
         Baralho baralho = new Baralho();
 
         // Index para conseguir o valor da manilha na lista abaixo
-        final int idxVira = Arrays.asList(baralho.getBaralho()).indexOf(this.getCarta());
+        final int idxVira = baralho.getBaralho().indexOf(this.getCarta());
 
         // Caso a vira seja "3", precisamos utilizar um ternario(ou if) para retornar para o valor "4", ou seja, o primeiro índice do Array
-        final String valorCartaManilha = idxVira == baralho.getBaralho().length - 1
-                ? baralho.getBaralho()[0]
-                : baralho.getBaralho()[idxVira + 1];
+        final String valorCartaManilha = idxVira == baralho.getBaralho().toArray().length - 1
+                ? baralho.getBaralho().getFirst()
+                : baralho.getBaralho().get(idxVira + 1);
 
         List<String> manilhas = new ArrayList<>();
 
