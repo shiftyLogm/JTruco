@@ -23,7 +23,7 @@ public class Manilha extends Carta {
                 ? "4"
                 : baralho.getBaralho()[idxVira + 1];
 
-        List<String> manilhas = new ArrayList<String>();
+        List<String> manilhas = new ArrayList<>();
 
         // Adição das manilhas em um array
         for (Naipe naipe : Naipe.values()) {
