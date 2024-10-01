@@ -13,6 +13,8 @@ public class Jogo {
         return enemyPoints;
     }
 
+    private int yourCardValue, enemyCardValue, yourRoundPoints, enemyRoundPoints;
+
     public void round(List<Carta> yourHand, List<Carta> enemyHand) {
 
         Scanner scanner = new Scanner(System.in);
@@ -23,8 +25,7 @@ public class Jogo {
 
         while (true) {
 
-            int yourCardValue = 0, enemyCardValue = 0, yourRoundPoints = 0, enemyRoundPoints = 0;
-            if(yourRoundPoints == 2 || enemyRoundPoints == 2) break;
+            if(this.yourRoundPoints == 2 || this.enemyRoundPoints == 2) break;
 
             System.out.println("-------------------------------------");
             // Iteração para mostrar as cartas e seus respectivos inputs de teclas para serem jogados
@@ -77,14 +78,15 @@ public class Jogo {
                      Isso é com base na posição do indice da Lista, quanto mais pra frente
                      mais forte a carta, a exceçao é as Manilhas
                     */
-                    yourCardValue = getIndexBaralho(yourCard);
-                    enemyCardValue = getIndexBaralho(enemyCard);
+                    this.yourCardValue = getIndexBaralho(yourCard);
+                    this.enemyCardValue = getIndexBaralho(enemyCard);
 
                     System.out.println(yourCardValue > enemyCardValue ? "Venceu" : "Perdeu");
 
                     // Aumenta a quantidade de jogadas vencidas
-                    yourRoundPoints += yourCardValue > enemyCardValue ? 1 : 0;
-                    enemyRoundPoints += enemyCardValue > yourCardValue ? 1 : 0;
+                    this.yourRoundPoints += yourCardValue > enemyCardValue ? 1 : 0;
+                    this.enemyRoundPoints += enemyCardValue > yourCardValue ? 1 : 0;
+
                     break;
 
                 } else {
@@ -94,8 +96,8 @@ public class Jogo {
         }
 
         // Aumentar os pontos com base na quantia vencidada da rodad
-        playerPoints += yourRoundPoints > enemyRoundPoints ? 1 : 0;
-        enemyPoints += enemyRoundPoints > yourRoundPoints ? 1 : 0;
+        Jogo.playerPoints += yourRoundPoints > enemyRoundPoints ? 1 : 0;
+        Jogo.enemyPoints += enemyRoundPoints > yourRoundPoints ? 1 : 0;
     }
 
     // Retornar o index do baralho que contenha a carta da mão
@@ -107,4 +109,3 @@ public class Jogo {
 
     }
 }
-
